@@ -217,7 +217,7 @@ class Gui:
         register_window = Toplevel(self.master)
         register_window.focus_force()
         register_window.grab_set()
-        register_window.geometry("400x150")
+        register_window.geometry("550x150")
         register_window.title("Create Account")
         register_window.resizable(0, 0)
 
@@ -230,7 +230,7 @@ class Gui:
         label_register_pass = Label(label_entry_frame, text="Password", font=self.label_font, width=15, anchor=E,
                                     bg="lightBlue")
         entry_register_pass = Entry(label_entry_frame, font=("arial", 9, "bold"), width=30, show="*")
-        label_register_confirm = Label(label_entry_frame, text="Confirm Password", font=self.label_font, width=15,
+        label_register_confirm = Label(label_entry_frame, text="Confirm Password", font=self.label_font, width=20,
                                        anchor=E, bg="lightBlue")
         entry_register_confirm = Entry(label_entry_frame, font=("arial", 9, "bold"), width=30, show="*")
 
@@ -238,8 +238,8 @@ class Gui:
         entry_register_name.grid(row=0, column=1, pady=5, padx=10)
         label_register_pass.grid(row=1, column=0, pady=5, padx=10)
         entry_register_pass.grid(row=1, column=1, pady=5, padx=10)
-        label_register_confirm.grid(row=2, column=0, pady=5, padx=10)
-        entry_register_confirm.grid(row=2, column=1, pady=5, padx=10)
+        label_register_confirm.grid(row=2, column=0, pady=5, padx=20)
+        entry_register_confirm.grid(row=2, column=1, pady=5, padx=20)
 
         btn_frame = Frame(register_window)
         btn_frame.pack()
@@ -307,7 +307,7 @@ class Gui:
         created_at = Label(about_frame)
         created_at.config(text="10/19/2018")
 
-        app_info = Text(about_window, width=60, height=15, font=("arial", 10,"normal"), fg="greenYellow", bg="#444")
+        app_info = Text(about_window, width=60, height=15, font=("arial", 10, "normal"), fg="greenYellow", bg="#444")
         app_info.insert(0.0, info)
 
         label_name.grid(row=0, column=0, pady=5, padx=10)
@@ -315,7 +315,6 @@ class Gui:
         label_created_at.grid(row=1, column=0, pady=5, padx=10)
         created_at.grid(row=1, column=1, pady=5, padx=10)
         app_info.pack()
-
 
     def login_action(self, username, password):
         users_username = username
@@ -419,18 +418,18 @@ class Gui:
             self.back_to_window(window)
 
     @staticmethod
-    def message_popup(title, text, type):
-        message_type = type
+    def message_popup(title, text, type_alert):
 
-        if message_type == "info":
+        if type_alert == "info":
             messagebox.showinfo('{}'.format(title), '{}'.format(text))
-        elif message_type == "warning":
+        elif type_alert == "warning":
             messagebox.showwarning('{}'.format(title), '{}'.format(text))
-        elif message_type == "question":
+        elif type_alert == "question":
             result = messagebox.askquestion('{}'.format(title), '{}'.format(text), icon='warning', default='no')
             return result
-        elif message_type == "error":
+        elif type_alert == "error":
             messagebox.showerror('{}'.format(title), '{}'.format(text))
+
 
 root = Tk()
 app = Gui(root)
